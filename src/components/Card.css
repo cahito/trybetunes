@@ -4,21 +4,24 @@
   border-radius: 10px;
   display: flex;
   flex-flow: column nowrap;
-  height: 180px;
+  height: 280px;
   justify-content: flex-start;
-  width: 120px;
+  text-decoration: none;
+  width: 180px;
 }
 
 .card img {
   height: 100px;
-  margin: 10px;
+  margin: 20px 40px;
   width: 100px;
 }
 
 .card h4 {
   margin-left: 10px;
+  overflow: auto;
 }
 
 .card h6 {
   margin-left: 10px;
+  overflow: auto;
 }

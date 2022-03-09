@@ -9,6 +9,8 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      artist: '',
+      artistNotFound: false,
       btnDisabled: true,
       loading: false,
       nameSearch: '',
@@ -38,11 +40,18 @@ class Search extends React.Component {
     const { nameSearch } = this.state;
     const artist = nameSearch;
     this.setState({
+      artistNotFound: false,
       loading: true,
     }, async () => {
       const response = await searchAlbumsAPI(artist);
       console.log(response);
+      if (response.length === 0) {
+        this.setState({
+          artistNotFound: true,
+        });
+      }
       this.setState({
+        artist,
         loading: false,
         nameSearch: '',
         response,
@@ -52,6 +61,8 @@ class Search extends React.Component {
 
   render() {
     const {
+      artist,
+      artistNotFound,
       btnDisabled,
       loading,
       nameSearch,
@@ -77,6 +88,13 @@ class Search extends React.Component {
           Pesquisar
         </button>
       </>);
+    const textResult = (
+      <p>
+        Resultado de álbuns de:
+        {' '}
+        {artist}
+      </p>
+    );
 
     return (
       <div data-testid="page-search">
@@ -84,22 +102,25 @@ class Search extends React.Component {
         <section className="search-container">
           {loading ? <Loading /> : inputArea}
         </section>
+        {response.length === 0
+          ? ''
+          : textResult}
         <section className="card-container">
-          {/* <p>
-            Resultado de álbuns de:
-            {' '}
-            {artistName}
-          </p> */}
-          {response
-            .map(({ artistName, artworkUrl100, collectionId, collectionName }) => (
-              <Card
-                key={ collectionId }
-                id={ collectionId }
-                artistName={ artistName }
-                artworkUrl100={ artworkUrl100 }
-                collectionName={ collectionName }
-              />
-            ))}
+
+          {
+            artistNotFound
+              ? <p>Nenhum álbum foi encontrado</p>
+              : response
+                .map(({ artistName, artworkUrl100, collectionId, collectionName }) => (
+                  <Card
+                    key={ collectionId }
+                    collectionId={ collectionId }
+                    artistName={ artistName }
+                    artworkUrl100={ artworkUrl100 }
+                    collectionName={ collectionName }
+                  />
+                ))
+          }
         </section>
       </div>
     );

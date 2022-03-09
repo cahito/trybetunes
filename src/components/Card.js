@@ -8,17 +8,21 @@ class Card extends React.Component {
     const {
       artistName,
       artworkUrl100,
+      collectionId,
       collectionName,
     } = this.props;
 
     return (
-      <NavLink to="/album/:id">
-        <div className="card">
+      <div className="card">
+        <NavLink
+          data-testid={ `link-to-album-${collectionId}` }
+          to={ `/album/${collectionId}` }
+        >
           <img alt={ collectionName } src={ artworkUrl100 } />
-          <h4>{ collectionName }</h4>
-          <h6>{ artistName }</h6>
-        </div>
-      </NavLink>
+        </NavLink>
+        <h4>{collectionName}</h4>
+        <h6>{artistName}</h6>
+      </div>
     );
   }
 }
@@ -26,6 +30,7 @@ class Card extends React.Component {
 Card.propTypes = {
   artistName: PropTypes.string.isRequired,
   artworkUrl100: PropTypes.string.isRequired,
+  collectionId: PropTypes.number.isRequired,
   collectionName: PropTypes.string.isRequired,
 };
 
