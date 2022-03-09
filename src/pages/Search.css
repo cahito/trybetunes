@@ -2,4 +2,12 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  margin-top: 50px;
+}
+
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+  justify-content: space-around;
 }

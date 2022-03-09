@@ -1,0 +1,24 @@
+.card {
+  align-items: flex-start;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 180px;
+  justify-content: flex-start;
+  width: 120px;
+}
+
+.card img {
+  height: 100px;
+  margin: 10px;
+  width: 100px;
+}
+
+.card h4 {
+  margin-left: 10px;
+}
+
+.card h6 {
+  margin-left: 10px;
+}
