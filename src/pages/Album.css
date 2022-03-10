@@ -3,7 +3,9 @@
   border: 2px solid lightgray;
   display: flex;
   justify-content: space-between;
-  margin: auto;
+  margin-bottom: 30px;
+  margin-inline: auto;
+  margin-top: 30px;
   width: 60%;
 }
 
@@ -16,4 +18,5 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  width: 600px;
 }

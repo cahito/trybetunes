@@ -27,7 +27,6 @@ class Header extends React.Component {
 
   render() {
     const { loading, user } = this.state;
-    this.fetchUser();
 
     return (
       <>

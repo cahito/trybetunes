@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './MusicCard.css';
 
 class MusicCard extends React.Component {
+  handleCheck = (event) => {
+    if (event.value === checked) {
+      
+    }
+  }
+
   render() {
     const {
       previewUrl,
+      trackId,
       trackName,
     } = this.props;
     return (
-      <div>
-        <p>{ trackName }</p>
+      <div className="tracks">
+        <div>{ trackName }</div>
         <audio
           data-testid="audio-component"
           src={ previewUrl }
@@ -20,6 +28,16 @@ class MusicCard extends React.Component {
           <code>audio</code>
           .
         </audio>
+        <label htmlFor="favCheck" className="favorita">
+          Favorita
+          {' '}
+          <input
+            data-testid={ `checkbox-music-${trackId}` }
+            name="favCheck"
+            type="checkbox"
+            onChange={ this.handleCheck }
+          />
+        </label>
       </div>
     );
   }
@@ -27,6 +45,7 @@ class MusicCard extends React.Component {
 
 MusicCard.propTypes = {
   previewUrl: PropTypes.string.isRequired,
+  trackId: PropTypes.string.isRequired,
   trackName: PropTypes.string.isRequired,
 };
 

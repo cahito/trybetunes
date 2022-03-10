@@ -1,0 +1,11 @@
+.tracks {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 600px;
+}
+
+.favorita {
+  width: 80px;
+}
