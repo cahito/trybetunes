@@ -44,7 +44,6 @@ class Search extends React.Component {
       loading: true,
     }, async () => {
       const response = await searchAlbumsAPI(artist);
-      console.log(response);
       if (response.length === 0) {
         this.setState({
           artistNotFound: true,

@@ -1,0 +1,19 @@
+.album-container {
+  background-color: whitesmoke;
+  border: 2px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 60%;
+}
+
+.album-img {
+  margin: 10px;
+}
+
+.music-list {
+  align-items: flex-end;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}

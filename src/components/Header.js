@@ -13,6 +13,10 @@ class Header extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchUser();
+  }
+
   fetchUser = async () => {
     const user = await getUser();
     this.setState({
