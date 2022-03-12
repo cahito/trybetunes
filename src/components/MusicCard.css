@@ -9,3 +9,11 @@
 .favorita {
   width: 80px;
 }
+
+.track-space {
+  align-items: center;
+  display: flex;
+  height: 54px;
+  justify-content: center;
+  width: 600px;
+}

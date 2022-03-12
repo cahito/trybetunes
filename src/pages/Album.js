@@ -46,12 +46,11 @@ class Album extends React.Component {
               className="album-img"
               src={ artworkUrl100 }
             />
-            <h3 data-testid="album-name">{ collectionName }</h3>
-            <h5 data-testid="artist-name">{ artistName }</h5>
+            <h3 data-testid="album-name">{collectionName}</h3>
+            <h5 data-testid="artist-name">{artistName}</h5>
           </div>
           <div className="music-list">
             {
-              // console.log(musicList)
               musicList
                 .filter((music) => music.kind === 'song')
                 .map((music) => (
@@ -70,8 +69,14 @@ class Album extends React.Component {
 }
 
 Album.propTypes = {
-  match: PropTypes.string.isRequired,
-  params: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    isExact: PropTypes.bool.isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+    path: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Album;
