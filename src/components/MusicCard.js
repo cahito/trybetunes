@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MusicCard.css';
 import Loading from './Loading';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor(props) {
@@ -19,13 +19,19 @@ class MusicCard extends React.Component {
       isChecked: !prevState.isChecked,
       loading: true,
     }), async () => {
+      const { isChecked } = this.state;
       const { trackId, trackName, previewUrl, kind } = this.props;
-      await addSong({
+      const song = {
         trackId,
         trackName,
         previewUrl,
         kind,
-      });
+      };
+      if (isChecked) {
+        await addSong(song);
+      } else {
+        await removeSong(song);
+      }
       this.setState({
         loading: false,
       });
@@ -43,9 +49,10 @@ class MusicCard extends React.Component {
       <>
         <div>{trackName}</div>
         <audio
+          controls
+          className="track-player"
           data-testid="audio-component"
           src={ previewUrl }
-          controls
         >
           <track kind="captions" />
           O seu navegador não suporta o elemento
