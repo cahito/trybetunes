@@ -7,8 +7,9 @@ import { addSong } from '../services/favoriteSongsAPI';
 class MusicCard extends React.Component {
   constructor(props) {
     super(props);
+    const { isFavSong } = this.props;
     this.state = {
-      isChecked: false,
+      isChecked: isFavSong,
       loading: false,
     };
   }
@@ -18,8 +19,13 @@ class MusicCard extends React.Component {
       isChecked: !prevState.isChecked,
       loading: true,
     }), async () => {
-      const { trackId } = this.props;
-      await addSong(trackId);
+      const { trackId, trackName, previewUrl, kind } = this.props;
+      await addSong({
+        trackId,
+        trackName,
+        previewUrl,
+        kind,
+      });
       this.setState({
         loading: false,
       });
@@ -51,7 +57,7 @@ class MusicCard extends React.Component {
           {' '}
           <input
             data-testid={ `checkbox-music-${trackId}` }
-            defaultChecked={ isChecked }
+            checked={ isChecked }
             id={ trackId }
             name="favCheck"
             type="checkbox"
@@ -71,6 +77,8 @@ class MusicCard extends React.Component {
 }
 
 MusicCard.propTypes = {
+  isFavSong: PropTypes.bool.isRequired,
+  kind: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   trackName: PropTypes.string.isRequired,

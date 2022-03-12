@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import './Album.css';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from '../components/Loading';
 
 class Album extends React.Component {
   constructor(props) {
@@ -12,12 +14,24 @@ class Album extends React.Component {
       artistName: '',
       artworkUrl100: '',
       collectionName: '',
+      favSongs: [],
+      loading: false,
       musicList: [],
     };
   }
 
   componentDidMount() {
     this.creatAlbum();
+    this.setState({
+      loading: true,
+    }, async () => {
+      const favSongsList = await getFavoriteSongs();
+      console.log(favSongsList);
+      this.setState({
+        favSongs: favSongsList,
+        loading: false,
+      });
+    });
   }
 
   creatAlbum = async () => {
@@ -35,7 +49,31 @@ class Album extends React.Component {
   };
 
   render() {
-    const { artistName, artworkUrl100, collectionName, musicList } = this.state;
+    const {
+      artistName,
+      artworkUrl100,
+      collectionName,
+      favSongs,
+      loading,
+      musicList,
+    } = this.state;
+    const renderedList = (
+      <div className="music-list">
+        {
+          musicList
+            .filter((music) => music.kind === 'song')
+            .map((music) => (
+              <MusicCard
+                isFavSong={ favSongs.some((fav) => fav.trackId === music.trackId) }
+                key={ music.trackId }
+                kind={ music.kind }
+                previewUrl={ music.previewUrl }
+                trackName={ music.trackName }
+                trackId={ music.trackId }
+              />))
+        }
+      </div>);
+
     return (
       <div data-testid="page-album">
         <Header />
@@ -49,19 +87,9 @@ class Album extends React.Component {
             <h3 data-testid="album-name">{collectionName}</h3>
             <h5 data-testid="artist-name">{artistName}</h5>
           </div>
-          <div className="music-list">
-            {
-              musicList
-                .filter((music) => music.kind === 'song')
-                .map((music) => (
-                  <MusicCard
-                    key={ music.trackId }
-                    previewUrl={ music.previewUrl }
-                    trackName={ music.trackName }
-                    trackId={ music.trackId }
-                  />))
-            }
-          </div>
+          {loading
+            ? <Loading />
+            : renderedList}
         </section>
       </div>
     );
