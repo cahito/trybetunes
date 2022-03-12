@@ -14,6 +14,10 @@ class MusicCard extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    console.log('atualizou o card');
+  }
+
   handleCheck = () => {
     this.setState((prevState) => ({
       isChecked: !prevState.isChecked,

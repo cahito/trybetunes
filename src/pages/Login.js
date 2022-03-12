@@ -3,6 +3,7 @@ import './Login.css';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import Logo from '../images/LOGO_POSITIVA 1.svg';
 
 class Login extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class Login extends React.Component {
     }
     return (
       <div data-testid="page-login" className="login-container">
-        <p>Imagem teste</p>
+        <img alt="Logo em SVG" src={ Logo } />
         <input
           className="input-name"
           data-testid="login-name-input"
