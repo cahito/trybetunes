@@ -11,12 +11,25 @@
   width: 30%;
 }
 
+.userPhoto {
+  align-items: flex-end;
+  display: flex;
+  height: 110px;
+  justify-content: space-between;
+}
+
+.photo {
+  height: 100px;
+  margin: 10px;
+  width: 100px;
+}
+
 .userPhoto a {
   background-color: lightgray;
   border: 1px solid black;
   border-radius: 10px;
   color: black;
-  margin: 10px;
+  margin-inline: 40px;
   padding: 3px 10px;
   text-decoration: none;
 }

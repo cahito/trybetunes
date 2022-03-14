@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import logoHeader from '../images/LOGO_POSITIVA_2.png';
 import './Header.css';
 import Loading from './Loading';
 
@@ -31,7 +32,7 @@ class Header extends React.Component {
     return (
       <>
         <header data-testid="header-component" className="header">
-          <h1>Cabeçalho</h1>
+          <img alt="Logo do site" className="logo-header" src={ logoHeader } />
           {loading
             ? <Loading />
             : <p data-testid="header-user-name" className="username">{user.name}</p>}

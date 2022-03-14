@@ -56,7 +56,7 @@ class Login extends React.Component {
     }
     return (
       <div data-testid="page-login" className="login-container">
-        <img alt="Logo em SVG" src={ Logo } />
+        <img className="login-logo" alt="Logo em SVG" src={ Logo } />
         <input
           className="input-name"
           data-testid="login-name-input"

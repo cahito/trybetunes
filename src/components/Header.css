@@ -3,14 +3,34 @@
   background-color: rgb(2, 48, 49);
   color: white;
   display: flex;
-  height: 70px;
+  height: 80px;
   justify-content: space-between;
   width: 100%;
 }
 
+.logo-header {
+  background-color: gainsboro;
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 75px;
+  margin-left: 3px;
+}
+
+.username {
+  background-color: gainsboro;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: black;
+  font-weight: 600;
+  margin-right: 10px;
+  padding: 7px;
+  text-align: center;
+  width: 10%;
+}
+
 .navbar {
   align-items: center;
-  background-color: whitesmoke;
+  background-color: gainsboro;
   display: flex;
   height: 50px;
   justify-content: space-around;
@@ -29,16 +49,4 @@
   background-color: rgb(3, 107, 82);
   color: white;
   padding: 15px 0;
-}
-
-.username {
-  background-color: whitesmoke;
-  border: 1px solid black;
-  border-radius: 10px;
-  color: black;
-  font-weight: 600;
-  margin-right: 10px;
-  padding: 7px;
-  text-align: center;
-  width: 10%;
 }

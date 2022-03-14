@@ -9,6 +9,10 @@
   width: 500px;
 }
 
+.login-logo {
+  margin-bottom: 25px;
+}
+
 .input-name {
   color: black;
   margin: 5px;
