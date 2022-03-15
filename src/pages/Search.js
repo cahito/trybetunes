@@ -88,7 +88,7 @@ class Search extends React.Component {
         </button>
       </>);
     const textResult = (
-      <p>
+      <p className="yes-album">
         Resultado de álbuns de:
         {' '}
         {artist}
@@ -108,7 +108,7 @@ class Search extends React.Component {
 
           {
             artistNotFound
-              ? <p>Nenhum álbum foi encontrado</p>
+              ? <p className="no-album">Nenhum álbum foi encontrado</p>
               : response
                 .map(({ artistName, artworkUrl100, collectionId, collectionName }) => (
                   <Card

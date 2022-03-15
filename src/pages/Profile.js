@@ -42,10 +42,6 @@ class Profile extends React.Component {
     });
   }
 
-  handleEdit = () => {
-
-  }
-
   render() {
     const {
       loading,
@@ -58,7 +54,7 @@ class Profile extends React.Component {
     } = this.state;
     const userForm = (
       <>
-        <div className="userPhoto">
+        <div className="profilePhoto">
           <img
             alt="Foto do usuário"
             className="photo"

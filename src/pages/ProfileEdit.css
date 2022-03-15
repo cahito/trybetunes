@@ -1,0 +1,42 @@
+.userPhoto {
+  align-items: center;
+  display: flex;
+  height: 110px;
+  justify-content: space-between;
+}
+
+label {
+  margin-bottom: 10px;
+  width: 210px;
+}
+
+input {
+  border-bottom: 2px solid gray;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-size: 1rem;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+textarea {
+  border-bottom: 2px solid gray;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-size: 1rem;
+  margin: 10px 0;
+  padding: 10px 0;
+  resize: none;
+}
+
+.saveBtn {
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: black;
+  margin-inline: 40px;
+  padding: 3px 10px;
+  text-decoration: none;
+}
