@@ -16,6 +16,7 @@ class ProfileEdit extends React.Component {
       email: '',
       image: '',
       description: '',
+      redirect: false,
     };
   }
 
@@ -40,7 +41,7 @@ class ProfileEdit extends React.Component {
         image: userPhoto,
         description: userDescr,
         loading: false,
-      });
+      }, this.validate);
     });
   }
 
@@ -55,16 +56,20 @@ class ProfileEdit extends React.Component {
     const {
       name,
       email,
-      photo,
+      image,
       description,
     } = this.state;
-    const array = [name, email, photo, description];
-    const allFilled = array.every((each) => (each !== undefined));
+    const array = [name, email, image, description];
+    const allFilled = array.every((each) => (each));
     console.log(array);
     console.log(allFilled);
     if (allFilled) {
       this.setState({
         btnDisabled: false,
+      });
+    } else {
+      this.setState({
+        btnDisabled: true,
       });
     }
   }
@@ -83,6 +88,7 @@ class ProfileEdit extends React.Component {
       await updateUser(user);
       this.setState({
         loading: false,
+        redirect: true,
       });
     });
   }
@@ -95,6 +101,7 @@ class ProfileEdit extends React.Component {
       email,
       image,
       description,
+      redirect,
     } = this.state;
     const editForm = (
       <>
@@ -172,9 +179,11 @@ class ProfileEdit extends React.Component {
           {loading
             ? <Loading />
             : editForm}
+          {redirect && <Redirect to="/profile" />}
         </section>
       </div>
     );
   }
 }
+
 export default ProfileEdit;
