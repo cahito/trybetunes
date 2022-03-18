@@ -15,6 +15,14 @@ class Favorites extends React.Component {
   }
 
   componentDidMount() {
+    this.updateFav();
+  }
+
+  componentDidUpdate() {
+    console.log('atualizou o favorite');
+  }
+
+  updateFav = () => {
     this.setState({
       loading: true,
     }, async () => {
@@ -25,10 +33,6 @@ class Favorites extends React.Component {
         loading: false,
       });
     });
-  }
-
-  componentDidUpdate() {
-    console.log('atualizou o favorite');
   }
 
   render() {
@@ -44,6 +48,7 @@ class Favorites extends React.Component {
               previewUrl={ music.previewUrl }
               trackName={ music.trackName }
               trackId={ music.trackId }
+              updateFav={ this.updateFav }
             />
           ))
         }
@@ -54,9 +59,9 @@ class Favorites extends React.Component {
       <div data-testid="page-favorites">
         <Header />
         <section className="favorite-container">
-          { loading
+          {loading
             ? <Loading />
-            : renderedFavs }
+            : renderedFavs}
         </section>
       </div>
     );

@@ -22,6 +22,10 @@ class Album extends React.Component {
 
   componentDidMount() {
     this.creatAlbum();
+    this.updateFav();
+  }
+
+  updateFav = () => {
     this.setState({
       loading: true,
     }, async () => {
@@ -70,6 +74,7 @@ class Album extends React.Component {
                 previewUrl={ music.previewUrl }
                 trackName={ music.trackName }
                 trackId={ music.trackId }
+                updateFav={ this.updateFav }
               />))
         }
       </div>);
